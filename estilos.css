@@ -1,0 +1,351 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.card{
+background:rgba(255,255,255,0.95);
+width:90%;
+max-width:900px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+overflow:hidden;
+animation:fadeIn 1.5s ease;
+}
+header{
+background:linear-gradient(135deg,#ff4d6d,#ff758f);
+color:#fff;
+text-align:center;
+padding:30px 20px;
+}
+header h1{
+font-family:'Great Vibes',cursive;
+font-size:3rem;
+}
+header p{margin-top:10px;opacity:0.9;}
+.tabs{
+display:flex;
+justify-content:space-around;
+background:#ffe3e8;
+}
+.tabs label{
+padding:15px 10px;
+cursor:pointer;
+font-weight:600;
+color:#c9184a;
+transition:0.3s;
+}
+.tabs label:hover{background:#ffccd5;}
+input[type="radio"]{display:none;}
+.content{
+padding:30px;
+display:none;
+animation:slide 0.6s ease;
+}
+#tab1:checked ~ .contenidos #content1,
+#tab2:checked ~ .contenidos #content2,
+#tab3:checked ~ .contenidos #content3,
+#tab4:checked ~ .contenidos #content4{
+display:block;
+}
+.content h2{
+color:#c9184a;
+margin-bottom:15px;
+}
+.flechas {
+  display: flex;
+  justify-content: center;   /* las manda al centro */
+  gap: 40px;                 /* separación entre flechas */
+  margin-top: 35px;          /* las separa del contenido */
+  padding-bottom: 10px;      /* aire con el borde inferior */
+}
+
+
+.flechas button {
+  background: linear-gradient(135deg, #ff5fa2, #ff8fc7);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 15px 37px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.flechas button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(255, 105, 180, 0.6);
+}
+
+.content p{line-height:1.8;color:#555;}
+footer{
+text-align:center;
+padding:15px;
+background:#fff0f3;
+color:#c9184a;
+font-size:0.9rem;
+}
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);} }
+@keyframes slide{
+from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+.content {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.8s ease-in-out;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* Contenedor para evitar que se mueva el tamaño */
+.contenidos {
+  position: relative;
+  min-height: 220px;
+}
+
+/* Mostrar contenido activo */
+#tab1:checked ~ .contenidos #content1,
+#tab2:checked ~ .contenidos #content2,
+#tab3:checked ~ .contenidos #content3,
+#tab4:checked ~ .contenidos #content4 {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.foto {
+  cursor: pointer;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid #ff8fc7;
+  box-shadow: 0 6px 15px rgba(255,105,180,0.4);
+  transition: transform 0.4s;
+}
+
+.foto:hover {
+  transform: scale(1.05);
+}
+
+.foto img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+/* ================= COLLAGE BASE ================= */
+
+.galeria-collage{
+  position:relative;
+  width:100%;
+  height:450px;
+  margin-top:30px;
+}
+
+/* FOTO BASE */
+.foto{
+  position:absolute;
+  width:22%;
+  max-width:180px;
+  aspect-ratio:3/4;
+  padding:8px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(255,105,180,0.5);
+  cursor:pointer;
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.foto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* ================= POSICIONES PC ================= */
+
+.f1{ top:5%; left:5%; transform:rotate(-8deg); }
+.f2{ top:10%; right:5%; transform:rotate(6deg); }
+.f3{ bottom:10%; left:15%; transform:rotate(-5deg); }
+.f4{ bottom:5%; right:15%; transform:rotate(10deg); }
+.f5{ top:50%; left:50%; transform:translate(-50%,-50%) rotate(2deg); z-index:5; }
+
+/* Hover elegante */
+.foto:hover{
+  transform:scale(1.08) rotate(0deg);
+  z-index:6;
+  box-shadow:0 20px 40px rgba(255,105,180,0.7);
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:768px){
+
+  .galeria-collage{
+    height:auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    position:static;
+  }
+
+  .foto{
+    position:static;
+    width:45%;
+    max-width:none;
+    transform:rotate(0deg)!important;
+  }
+
+  .f5{
+    width:70%;
+  }
+
+}
+
+/* ================= CELULAR ================= */
+
+@media (max-width:480px){
+
+  .foto{
+    width:90%;
+  }
+
+  .f5{
+    width:95%;
+  }
+
+}
+
+
+
+/* hover elegante */
+.foto:hover {
+  transform: scale(1.12) rotate(0deg);
+  z-index: 20;
+  box-shadow: 0 25px 45px rgba(255, 105, 180, 0.7);
+}
+
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-6px) rotate(var(--rot)); }
+}
+
+
+/* Modal romántico */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 80%;
+  max-height: 60%;
+  border-radius: 20px;
+  border: 4px solid #ff5fa2;
+  animation: zoom 0.6s ease;
+}
+
+.modal p {
+  color: #fff;
+  margin-top: 15px;
+  font-size: 16px;
+  text-align: center;
+  max-width: 80%;
+}
+
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+} @media (max-width: 768px) {
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tabs label {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .galeria-collage {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    position: static;
+  }
+
+  .foto {
+    position: static;
+    width: 45%;
+    transform: rotate(0deg) !important;
+  }
+
+  .f5 {
+    width: 70%;
+  }
+
+  .flechas {
+    gap: 20px;
+  }
+
+  .flechas button {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+
+  .foto {
+    width: 90%;
+  }
+
+  .f5 {
+    width: 95%;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+}

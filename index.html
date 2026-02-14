@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>San Valentín 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="icon" href="img/corazon-removebg-preview.png" type="image/png">
+</head>
+<body>
+<div class="card">
+<header>
+<h1>Feliz 14 de Febrero 💘</h1>
+<p>Una pequeña pagina para recordarte lo mucho que te amo y 
+    me motivas a seguir adelante mi amor te amo mucho </p>
+</header>
+
+
+<input type="radio" name="tabs" id="tab1" checked>
+<input type="radio" name="tabs" id="tab2">
+<input type="radio" name="tabs" id="tab3">
+<input type="radio" name="tabs" id="tab4">
+
+
+<div class="tabs">
+<label for="tab1">💖 Inicio</label>
+<label for="tab2">🌹 Mensaje</label>
+<label for="tab3">💌 Promesas</label>
+<label for="tab4">✨ Recuerdos</label>
+</div>
+
+
+<div class="contenidos">
+<div class="content" id="content1">
+<h2>Hola mi amor</h2>
+<p>Quisiera haberte dado algo mas caro en forma fisica un ramo de flores y/o un peluche pero tu sabes que por ahora no se puede bby y solo queria
+    desearte un bonito dia de nuestro amor 1 año y 10 meses jsjsjsj wuaooo tanto tiempo juntos creando una historia de amor bonita y que esto dure mas
+    esta pagina le dedique tiempo y mucho amor bby no podre darte algo mejor pero te hago este dettale con mucho amor 💖
+</p>
+
+</div>
+<div class="content" id="content2">
+<h2>Mensaje Bonito para Ti Mi Amor</h2>
+<p>Feliz 14 de febrero, amor mío ❤️
+Hoy celebro no solo una fecha, sino la suerte inmensa de tener a la mejor novia del mundo: la que me apoya, me impulsa, me cuida y brilla en todo lo que hace ✨
+Contigo aprendí que el amor también es confianza, risas, miradas que lo dicen todo y abrazos que se sienten como hogar 🤍
+
+Me encanta la forma en la que conectamos… en lo simple, en lo intenso y en esos momentos donde no hace falta decir nada 😌🔥
+Este 14 quiero perderme contigo, sin apuros, sin relojes… solo tú y yo, dejando que el día (y la noche jsjsjsj) nos lleven a donde quieran.
+Si se nos da escaparnos y cerrar el mundo por unas horas… yo feliz de seguir escribiendo nuestra historia, más cerquita aún 💋
+
+Gracias por ser increíble, por ser tú, por ser mi amor ❤️
+Hoy, mañana y siempre… contigo 🌹✨</p>
+
+</div>
+<div class="content" id="content3">
+<h2>Nuestras Promesas</h2>
+<p>Hoy, en este 14 de febrero, te hago una promesa que nace desde lo más profundo de mi corazón ❤️
+Prometo cuidarte en los días buenos y protegerte en los días difíciles, estar cuando sonrías y cuando el mundo pese más de la cuenta. Prometo ser tu refugio, tu calma y tu fuerza cuando la necesites 🤍
+
+Mientras tenga vida, mientras mi corazón siga palpitando por ti 🫀✨, juro caminar a tu lado con amor, respeto y lealtad. Defender lo nuestro, proteger tus sueños, abrazarte cuando tengas miedo y celebrarte cuando brilles.
+
+Prometo no soltarte, no rendirme, no fallarte. Elegirte cada día, incluso cuando no sea fácil. Amarte con el cuerpo, con el alma y con cada latido que me regale el tiempo 💫🔥
+
+Esta no es solo una promesa de hoy…
+es una promesa de siempre,
+porque mi corazón ya sabe que su lugar es contigo 💘</p>
+</div>
+<div class="content" id="content4">
+  <h2>Recuerdos</h2>
+  <p>Cada momento contigo vive aquí 🤍</p>
+
+  <div class="galeria-collage">
+  <div class="foto f1" data-texto="Nuestro primer recuerdo juntos 💕">
+    <img src="img/foto1.jpeg">
+  </div>
+
+  <div class="foto f2" data-texto="Una risa que nunca olvidaré ✨">
+    <img src="img/foto2.jpeg">
+  </div>
+
+  <div class="foto f3" data-texto="Un día simple pero perfecto 🌹">
+    <img src="img/foto3.jpeg">
+  </div>
+
+  <div class="foto f4" data-texto="Contigo todo es hogar ❤️">
+    <img src="img/foto4.jpeg">
+  </div>
+  <div class="foto f5" data-texto="Nuestro recuerdo más especial 💞">
+  <img src="img/foto5.jpeg">
+</div>
+
+</div>
+
+  
+</div>
+
+<!-- Modal romántico -->
+<div class="modal" id="modal">
+  <span class="cerrar">&times;</span>
+  <img id="modalImg">
+  <p id="modalTexto"></p>
+</div>
+
+<div class="flechas">
+  <button id="prev">⟵</button>
+  <button id="next">⟶</button>
+</div>
+<script>
+  const fotos = document.querySelectorAll(".foto");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalTexto = document.getElementById("modalTexto");
+  const cerrar = document.querySelector(".cerrar");
+
+  fotos.forEach(foto => {
+    foto.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = foto.querySelector("img").src;
+      modalTexto.textContent = foto.dataset.texto;
+    });
+  });
+
+  cerrar.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+<script>
+  const tabs = ["tab1", "tab2", "tab3", "tab4"];
+  let current = 0;
+
+  function showTab(index) {
+    document.getElementById(tabs[index]).checked = true;
+  }
+
+  document.getElementById("next").addEventListener("click", () => {
+    current = (current + 1) % tabs.length;
+    showTab(current);
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    current = (current - 1 + tabs.length) % tabs.length;
+    showTab(current);
+  });
+</script>
+
+</div>
+
+<footer>
+Hecho con ❤️ para un 14 de febrero inolvidable
+</footer>
+</div>
+
+
+</body>
+</html>
